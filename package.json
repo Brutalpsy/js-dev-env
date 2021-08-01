@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "description": "js-dev-env",
   "scripts": {
-    "prestart": "babel-node buildScripts/startMessage.js",
-    "start": "babel-node buildScripts/srcServer.js",
+    "prestart": "babel-node  buildScripts/startMessage.js",
+    "start": "npm-run-all --parallel open:src lint:watch",
+    "open:src": "babel-node buildScripts/srcServer.js",
     "localtunnel": "lt --port 8085",
-    "share": "npm-run-all --parallel start localtunnel"
+    "share": "npm-run-all --parallel start localtunnel",
+    "lint": "esw webpack.config.* src buildScripts --color",
+    "lint:watch": "npm run lint -- --watch"
   },
   "dependencies": {
     "whatwg-fetch": "3.6.2"
