@@ -6,7 +6,7 @@ import config from "../webpack.config.dev";
 
 /* eslint-disable no-console */
 
-const port = 8085;
+const port = 3000;
 const app = express();
 const compiler = webpack(config);
 
@@ -26,4 +26,13 @@ app.listen(port, function (err) {
   } else {
     open("http://localhost:" + port);
   }
+});
+
+app.get("/users", (req, res) => {
+  res.json([
+    { id: 1, firstName: "Bob", lastName: "Smith", email: "bob@smith.com" },
+    { id: 2, firstName: "Tammy", lastName: "Smith", email: "tammy@smith.com" },
+    { id: 3, firstName: "Tina", lastName: "Smith", email: "tina@smith.com" },
+    { id: 4, firstName: "Danijel", lastName: "Smith", email: "dan@smith.com" },
+  ]);
 });
