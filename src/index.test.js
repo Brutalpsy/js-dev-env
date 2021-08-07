@@ -9,12 +9,12 @@ describe("First test", () => {
 });
 
 describe("index.html", () => {
-  it("should say hellow", () => {
+  it("should contain a h1 stating Users", () => {
     const index = fs.readFileSync("./src/index.html", "utf-8");
     const { JSDOM } = jsdom;
     const dom = new JSDOM(index);
     const h1 = dom.window.document.getElementsByTagName("h1")[0];
-    expect(h1.innerHTML).to.equal("Hellow world");
+    expect(h1.innerHTML).to.equal("Users");
     dom.window.close();
   });
 });
